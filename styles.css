@@ -1,10 +1,10 @@
 :root{
-  /* Color system: warm paper, soft charcoal */
+  /* Warm, low-contrast palette */
   --bg: #f5f3ee;          /* page background */
   --surface: #fbfaf7;     /* cards / boxes */
   --panel: #efede7;       /* alternate sections */
-  --ink: #1f2933;         /* primary text (not black) */
-  --muted: #5c6772;       /* secondary text */
+  --ink: #1f2933;         /* soft charcoal */
+  --muted: #5c6772;
   --hair: rgba(31,41,51,.14);
 
   /* Type */
@@ -12,7 +12,7 @@
   --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
 
   /* Layout */
-  --max: 740px;
+  --max: 760px;
   --padX: 28px;
 
   /* Spacing scale */
@@ -22,9 +22,8 @@
   --s4: 24px;
   --s5: 36px;
   --s6: 56px;
-  --s7: 88px;
+  --s7: 80px;
 
-  /* Radius */
   --r: 14px;
 }
 
@@ -48,26 +47,38 @@ body{
 }
 
 /* Top nav */
-.top{ padding: var(--s4) 0; }
+.top{
+  padding: var(--s4) 0;
+}
 
 .nav{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap: var(--s3);
 }
 
 .brand{
   font-size: 14px;
   letter-spacing: .02em;
-  color: rgba(31,41,51,.78);
+  color: rgba(31,41,51,.80);
+  white-space: nowrap;
+}
+
+.navlinks{
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .navlink{
   font-size: 14px;
-  color: rgba(31,41,51,.70);
+  color: rgba(31,41,51,.72);
   text-decoration:none;
+  white-space: nowrap;
 }
+
 .navlink:hover{
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -75,7 +86,7 @@ body{
 
 /* Hero */
 .hero{
-  padding: var(--s7) 0 var(--s6);
+  padding: var(--s6) 0 var(--s5);
 }
 
 .kicker{
@@ -91,14 +102,25 @@ h1{
   letter-spacing: -0.02em;
   line-height: 1.12;
   font-size: clamp(32px, 4.2vw, 54px);
-  max-width: 22ch;
+  max-width: 24ch;
 }
 
 .lede{
   margin: 0;
   font-size: 18px;
   color: var(--muted);
-  max-width: 62ch;
+  max-width: 66ch;
+}
+
+.lede.compact{
+  margin-bottom: 0;
+}
+
+.clarify{
+  margin-top: var(--s3);
+  color: rgba(31,41,51,.72);
+  max-width: 74ch;
+  font-size: 15px;
 }
 
 .actions{
@@ -108,7 +130,7 @@ h1{
   margin-top: var(--s4);
 }
 
-/* Buttons: calm, not shouty */
+/* Buttons */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -117,17 +139,19 @@ h1{
   border-radius: 999px;
   text-decoration:none;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 650;
   border: 1px solid var(--hair);
   background: var(--ink);
   color: var(--surface);
 }
+
 .btn:hover{ filter: brightness(0.96); }
 
 .btn.subtle{
   background: transparent;
   color: var(--ink);
 }
+
 .btn.subtle:hover{
   background: rgba(31,41,51,.05);
 }
@@ -148,7 +172,7 @@ h1{
 
 /* Sections */
 .section{
-  padding: var(--s7) 0;
+  padding: var(--s6) 0; /* reduced to avoid awkward gaps */
 }
 
 .section.alt{
@@ -157,36 +181,33 @@ h1{
   border-bottom: 1px solid var(--hair);
 }
 
-/* Small uppercase labels like your inspo */
+/* Section labels */
 .section h2{
   margin: 0 0 var(--s3);
-  font-size: 12px;
-  letter-spacing: .16em;
+  font-size: 14px; /* slightly bigger */
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(31,41,51,.70);
-  font-weight: 700;
+  color: rgba(31,41,51,.72);
+  font-weight: 750;
 }
 
 .section p{
   margin: 0 0 var(--s3);
-  max-width: 68ch;
+  max-width: 72ch;
 }
 
 .lines{
   margin: var(--s2) 0 var(--s4);
-  color: rgba(31,41,51,.80);
+  color: rgba(31,41,51,.82);
 }
 
-/* Emphasis block */
-.bigline{
-  margin: 0 0 var(--s2);
-  font-family: var(--serif);
-  font-size: clamp(18px, 2.2vw, 26px);
-  color: rgba(31,41,51,.90);
-  max-width: 60ch;
+.small{
+  margin-top: var(--s4);
+  font-size: 14px;
+  color: rgba(31,41,51,.64);
 }
 
-/* Boxes / cards */
+/* Boxes */
 .box{
   margin-top: var(--s4);
   padding: var(--s4);
@@ -198,14 +219,8 @@ h1{
 .box h3{
   margin: 0 0 var(--s2);
   font-size: 14px;
-  font-weight: 700;
-  color: rgba(31,41,51,.82);
-}
-
-.small{
-  margin-top: var(--s4);
-  font-size: 14px;
-  color: rgba(31,41,51,.64);
+  font-weight: 750;
+  color: rgba(31,41,51,.84);
 }
 
 /* Two-column layout */
@@ -223,7 +238,7 @@ h1{
   }
 }
 
-/* Pricing: engineered list */
+/* Pricing */
 .price{
   margin-top: var(--s4);
   border: 1px solid var(--hair);
@@ -244,8 +259,8 @@ h1{
 .row:first-child{ border-top: none; }
 
 .plan{
-  font-weight: 750;
-  color: rgba(31,41,51,.88);
+  font-weight: 800;
+  color: rgba(31,41,51,.90);
 }
 
 .desc{
@@ -276,4 +291,14 @@ h1{
   margin: 0;
   font-size: 12px;
   color: rgba(31,41,51,.55);
+}
+
+/* Mobile: keep nav from feeling cramped */
+@media (max-width: 520px){
+  .nav{
+    align-items:flex-start;
+  }
+  .navlinks{
+    gap: 10px;
+  }
 }
