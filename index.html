@@ -219,6 +219,125 @@
           </div>
         </div>
       </section>
+<section class="section" id="calculator">
+  <div class="wrap">
+    <h2>Value calculator</h2>
+
+    <p class="small">
+      Estimate the annual economics of advisory premium versus Keystone’s fee.
+      All figures are estimates and depend on your pricing and delivery model.
+    </p>
+
+    <div class="calc">
+      <div class="calc-grid">
+        <label class="field">
+          <span>Advisory premium per client (per month)</span>
+          <input id="premium" type="number" min="0" step="50" value="750" />
+        </label>
+
+        <label class="field">
+          <span># of advisory clients using Keystone</span>
+          <input id="clients" type="number" min="0" step="1" value="6" />
+        </label>
+
+        <label class="field">
+          <span>Setup hours (your team)</span>
+          <input id="setupHours" type="number" min="0" step="0.5" value="6" />
+        </label>
+
+        <label class="field">
+          <span>Ongoing hours per month (your team)</span>
+          <input id="monthlyHours" type="number" min="0" step="0.5" value="2" />
+        </label>
+
+        <label class="field">
+          <span>Estimated internal hourly cost (optional)</span>
+          <input id="hourlyCost" type="number" min="0" step="5" value="125" />
+        </label>
+
+        <label class="field">
+          <span>Tier</span>
+          <select id="tier">
+            <option value="pilot">Pilot (single client)</option>
+            <option value="tier1">Tier 1: Quarterly Backbone</option>
+            <option value="tier2">Tier 2: Monthly Enablement</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="calc-results">
+        <div class="result">
+          <div class="k">Annual premium revenue</div>
+          <div class="v" id="outRevenue">$0</div>
+        </div>
+
+        <div class="result">
+          <div class="k">Keystone annual fee</div>
+          <div class="v" id="outFee">$0</div>
+        </div>
+
+        <div class="result">
+          <div class="k">Firm take-home (premium minus Keystone)</div>
+          <div class="v" id="outTakeHome">$0</div>
+        </div>
+
+        <div class="result subtle">
+          <div class="k">Estimated internal labor cost (optional)</div>
+          <div class="v" id="outLabor">$0</div>
+        </div>
+
+        <div class="result">
+          <div class="k">Net after labor (estimate)</div>
+          <div class="v" id="outNet">$0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Update these numbers to match your actual pricing.
+  const PRICING = {
+    pilot: { annual: 1500, setup: 0 },            // one-time
+    tier1: { annual: 750 * 12, setup: 0 },        // firm-level
+    tier2: { annual: 1750 * 12, setup: 4500 }     // firm-level + setup
+  };
+
+  const fmt = (n) =>
+    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
+
+  function recalc() {
+    const premium = Number(document.getElementById("premium").value || 0);
+    const clients = Number(document.getElementById("clients").value || 0);
+    const setupHours = Number(document.getElementById("setupHours").value || 0);
+    const monthlyHours = Number(document.getElementById("monthlyHours").value || 0);
+    const hourlyCost = Number(document.getElementById("hourlyCost").value || 0);
+    const tier = document.getElementById("tier").value;
+
+    const annualPremiumRevenue = premium * clients * 12;
+
+    const tierCfg = PRICING[tier] ?? PRICING.tier1;
+    const keystoneAnnualFee = tierCfg.annual + tierCfg.setup;
+
+    const takeHome = annualPremiumRevenue - keystoneAnnualFee;
+
+    const internalLaborCost = (setupHours + monthlyHours * 12) * hourlyCost;
+    const netAfterLabor = takeHome - internalLaborCost;
+
+    document.getElementById("outRevenue").textContent = fmt(annualPremiumRevenue);
+    document.getElementById("outFee").textContent = fmt(keystoneAnnualFee);
+    document.getElementById("outTakeHome").textContent = fmt(takeHome);
+    document.getElementById("outLabor").textContent = fmt(internalLaborCost);
+    document.getElementById("outNet").textContent = fmt(netAfterLabor);
+  }
+
+  ["premium","clients","setupHours","monthlyHours","hourlyCost","tier"].forEach(id => {
+    document.getElementById(id).addEventListener("input", recalc);
+    document.getElementById(id).addEventListener("change", recalc);
+  });
+
+  recalc();
+</script>
 
       <section class="section" id="contact">
         <div class="wrap">
