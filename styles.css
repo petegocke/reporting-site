@@ -360,3 +360,8 @@ h3{margin:0 0 6px 0; font-size: 16px}
 }
 .foot-right a:hover{color: rgba(31,41,51,.92)}
 .smallbrand .brand-name{font-size: 14px}
+.pilot.single{
+  display: block;
+  max-width: 72ch;
+}
+
