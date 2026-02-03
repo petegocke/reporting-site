@@ -241,13 +241,13 @@
         </label>
 
         <label class="field">
-          <span>Setup hours (your team)</span>
-          <input id="setupHours" type="number" min="0" step="0.5" value="6" />
+          <span>Setup time saved (hours)</span>
+          <input id="setupHours" class="short" type="number" min="0" step="0.5" value="6" />
         </label>
-
+        
         <label class="field">
-          <span>Ongoing hours per month (your team)</span>
-          <input id="monthlyHours" type="number" min="0" step="0.5" value="2" />
+          <span>Ongoing time saved (hours / month)</span>
+          <input id="monthlyHours" class="short" type="number" min="0" step="0.5" value="2" />
         </label>
 
         <label class="field">
@@ -265,31 +265,35 @@
         </label>
       </div>
 
-      <div class="calc-results">
-        <div class="result">
-          <div class="k">Annual premium revenue</div>
-          <div class="v" id="outRevenue">$0</div>
+       <div class="eq">
+        <div class="eq-row">
+          <div class="eq-label">Premium revenue (annual)</div>
+          <div class="eq-val" id="outRevenue">$0</div>
         </div>
-
-        <div class="result">
-          <div class="k">Keystone annual fee</div>
-          <div class="v" id="outFee">$0</div>
+      
+        <div class="eq-row">
+          <div class="eq-label">Less: Keystone fee (annual)</div>
+          <div class="eq-val" id="outFee">$0</div>
         </div>
-
-        <div class="result">
-          <div class="k">Firm take-home (premium minus Keystone)</div>
-          <div class="v" id="outTakeHome">$0</div>
+      
+        <div class="eq-row eq-underline">
+          <div class="eq-label">Take-home before labor</div>
+          <div class="eq-val" id="outTakeHome">$0</div>
         </div>
-
-        <div class="result subtle">
-          <div class="k">Estimated internal labor cost (optional)</div>
-          <div class="v" id="outLabor">$0</div>
+      
+        <div class="eq-row">
+          <div class="eq-label">Add: labor savings (estimate)</div>
+          <div class="eq-val" id="outLaborSaved">$0</div>
         </div>
-
-        <div class="result">
-          <div class="k">Net after labor (estimate)</div>
-          <div class="v" id="outNet">$0</div>
+      
+        <div class="eq-row eq-total">
+          <div class="eq-label">Net benefit (estimate)</div>
+          <div class="eq-val" id="outNet">$0</div>
         </div>
+      
+        <p class="small subtle" style="margin-top:10px;">
+          Labor savings assumes this time is reallocated or avoided.
+        </p>
       </div>
     </div>
   </div>
