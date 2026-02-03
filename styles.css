@@ -79,6 +79,10 @@ a{color:inherit}
   font-size: 13px;
   border: 1px solid rgba(0,0,0,.12);
 }
+.nav .btn{
+  color: #fff;
+}
+
 .btn:hover{opacity:.92}
 .btn-ghost{
   background: transparent;
