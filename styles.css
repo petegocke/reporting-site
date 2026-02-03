@@ -121,7 +121,7 @@ h3{margin:0 0 6px 0; font-size: 16px}
 .subtle{color: rgba(31,41,51,.62)}
 
 /* Sections */
-.section{padding: 64px 0}
+.section{padding: 56px 0}
 .hero{padding: 68px 0 46px 0}
 .actions{display:flex; gap: 12px; margin-top: 18px; flex-wrap:wrap}
 
@@ -361,7 +361,14 @@ h3{margin:0 0 6px 0; font-size: 16px}
 .foot-right a:hover{color: rgba(31,41,51,.92)}
 .smallbrand .brand-name{font-size: 14px}
 .pilot.single{
-  display: block;
-  max-width: 72ch;
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: var(--r);
+  background: rgba(255,255,255,.45);
+  border: 1px solid var(--hair);
+}
+#pilot .bullets li{
+  margin: 6px 0;
 }
 
