@@ -301,76 +301,70 @@ h1{
   .navlinks{
     gap: 10px;
   }
-  .calc{
-  margin-top: 24px;
-  padding: 24px;
-  border: 1px solid var(--hair);
-  border-radius: var(--r);
-  background: var(--surface);
+/* Shorter inputs */
+.field input.short{
+  width: 120px;
+  max-width: 120px;
 }
 
+.field select{
+  width: 260px;
+  max-width: 100%;
+}
+
+/* Make the grid feel less stretched */
 .calc-grid{
   display:grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 
 @media (min-width: 860px){
   .calc-grid{
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
   }
 }
 
-.field span{
-  display:block;
-  font-size: 13px;
-  color: rgba(31,41,51,.72);
-  margin-bottom: 6px;
-}
-
-.field input, .field select{
-  width:100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--hair);
-  background: #fff;
-  color: var(--ink);
-  font-size: 14px;
-}
-
-.calc-results{
+/* Equation-style output */
+.eq{
   margin-top: 18px;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-@media (min-width: 860px){
-  .calc-results{
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.result{
-  padding: 14px;
+  padding: 16px;
   border: 1px solid var(--hair);
-  border-radius: 12px;
-  background: rgba(255,255,255,.60);
+  border-radius: 14px;
+  background: rgba(255,255,255,.55);
 }
 
-.result .k{
-  font-size: 12px;
-  color: rgba(31,41,51,.62);
+.eq-row{
+  display:flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 8px 0;
 }
 
-.result .v{
-  margin-top: 6px;
-  font-size: 18px;
+.eq-label{
+  font-size: 13px;
+  color: rgba(31,41,51,.70);
+}
+
+.eq-val{
+  font-size: 16px;
   font-weight: 800;
   color: rgba(31,41,51,.92);
+  font-variant-numeric: tabular-nums;
 }
 
-.result.subtle{
-  background: transparent;
+.eq-underline{
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  margin: 6px 0;
+  padding: 10px 0;
 }
+
+.eq-total .eq-label{
+  color: rgba(31,41,51,.85);
+}
+
+.eq-total .eq-val{
+  font-size: 18px;
 }
