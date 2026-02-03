@@ -258,7 +258,6 @@
               <select id="tier">
                 <option value="tier1">Tier 1: Quarterly Backbone</option>
                 <option value="tier2" selected>Tier 2: Monthly Enablement</option>
-                <option value="pilot">Pilot (single client)</option>
               </select>
             </label>
           </div>
@@ -368,7 +367,6 @@
   <script>
     // Pricing configuration (update as needed)
     const PRICING = {
-      pilot: { annual: 1500, setup: 0 },             // one-time pilot
       tier1: { annual: 750 * 12, setup: 0 },         // firm-level
       tier2: { annual: 1750 * 12, setup: 4500 }      // firm-level + setup
     };
